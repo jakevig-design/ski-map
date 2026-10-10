@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm:*)", "Bash(npx:*)", "Bash(node:*)", "Bash(git:*)",
+      "Bash(gh:*)", "Bash(supabase:*)", "Bash(vercel:*)", "Bash(curl:*)",
+      "Bash(mkdir:*)", "Bash(ls:*)", "Bash(cp:*)", "Bash(mv:*)"
+    ]
+  }
+}
