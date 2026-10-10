@@ -34,5 +34,9 @@ Choices the spec left open, and the places this build departs from it.
   An anon `PATCH` (Jay Peak → skied) gets the same 401. Anon reads return all rows.
 - **400 px:** no horizontal scroll (page width = viewport width); map 62vh, rail stacked below.
 - **Lighthouse (desktop):** Performance 100, Accessibility 100. FCP 0.6 s, LCP 0.7 s, TBT 0 ms, CLS 0.002.
-- **Not yet verified:** the signed-in editor checks (year persists after refresh; Jay Peak → skied and back; adding a background area as planned). They need sign-in, which needs blockers 2 and 3.
+- **Signed in as jakevig@gmail.com (on ski.jvtestspace.com):**
+  - Vail's trip year set to 2015 → still 2015 after a full reload, shown in the list as `2015`; read back from the database the same.
+  - Jay Peak → Mark as skied (2026): pin head turned red, row shows `2026`, stats 26 · 28 · 12 → 27 · 29 · 12; saved in the database.
+  - Stowe Mountain Resort (background) → Add to planned: listed as Planned, still there after a reload; then removed via the inline Remove / Keep confirm.
+  - Reverted: Vail's year cleared, Jay Peak's trip deleted and Jay Peak moved back to planned. Database confirmed back at the seed: 29 mountains (26 skied, 3 planned), 28 trips, no years, no Stowe.
 - **Skied with no trips:** once a skied mountain's last trip is deleted, its card offers Move to planned / Move to wishlist / Remove, so a mistaken "Mark as skied" can be undone from the editor. (Not in the spec; found while reverting the Jay Peak test.)
