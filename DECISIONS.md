@@ -25,3 +25,13 @@ Choices the spec left open, and the places this build departs from it.
 - **Region names** come from a built-in table of US states, Canadian provinces and Mexican states (`src/lib/regions.ts`).
 - **No `confirm()`:** deleting a trip or removing a mountain asks inline (Delete / Keep).
 - **Signed in as someone other than Jake:** the rail shows "Signed in · Sign out" and no editor.
+
+## Verification (2026-10-09, on https://ski-map-eta.vercel.app)
+
+- **Seed:** 29 mountains (26 skied, 3 planned), 28 trips. Stats read 26 mountains · 28 trips · 12 states & prov.; Tremblant shows `3×` on the map and three "Year TBD" trips on its card.
+- **RLS, signed out:** a direct insert with the anon key is refused —
+  `POST /rest/v1/ski_mountains` → `HTTP 401 {"code":"42501","message":"permission denied for table ski_mountains"}`.
+  An anon `PATCH` (Jay Peak → skied) gets the same 401. Anon reads return all rows.
+- **400 px:** no horizontal scroll (page width = viewport width); map 62vh, rail stacked below.
+- **Lighthouse (desktop):** Performance 100, Accessibility 100. FCP 0.6 s, LCP 0.7 s, TBT 0 ms, CLS 0.002.
+- **Not yet verified:** the signed-in editor checks (year persists after refresh; Jay Peak → skied and back; adding a background area as planned). They need sign-in, which needs blockers 2 and 3.
