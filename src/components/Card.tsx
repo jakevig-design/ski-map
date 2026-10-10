@@ -117,7 +117,27 @@ function CardBody({ mountain: m, area, editing, api, onClose, onAdopted }: Props
               </li>
             ))}
           </ul>
-          {editing && <div className="actions"><button className="btn" onClick={addTrip}>Add trip</button></div>}
+          {editing && (
+            <div className="actions">
+              <button className="btn" onClick={addTrip}>Add trip</button>
+              {/* With its last trip deleted, a mountain can go back on a list. */}
+              {m.trips.length === 0 && (
+                <>
+                  <button className="btn ghost" onClick={() => api.setStatus(m.id, 'planned')}>Move to planned</button>
+                  <button className="btn ghost" onClick={() => api.setStatus(m.id, 'wishlist')}>Move to wishlist</button>
+                  {confirmRemove ? (
+                    <span className="trip-edit">
+                      <span className="confirm-q">Remove?</span>
+                      <button className="btn danger small" onClick={() => { api.removeMountain(m.id); onClose() }}>Remove</button>
+                      <button className="btn ghost small" onClick={() => setConfirmRemove(false)}>Keep</button>
+                    </span>
+                  ) : (
+                    <button className="btn ghost" onClick={() => setConfirmRemove(true)}>Remove</button>
+                  )}
+                </>
+              )}
+            </div>
+          )}
         </>
       )}
 

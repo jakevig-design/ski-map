@@ -35,3 +35,4 @@ Choices the spec left open, and the places this build departs from it.
 - **400 px:** no horizontal scroll (page width = viewport width); map 62vh, rail stacked below.
 - **Lighthouse (desktop):** Performance 100, Accessibility 100. FCP 0.6 s, LCP 0.7 s, TBT 0 ms, CLS 0.002.
 - **Not yet verified:** the signed-in editor checks (year persists after refresh; Jay Peak → skied and back; adding a background area as planned). They need sign-in, which needs blockers 2 and 3.
+- **Skied with no trips:** once a skied mountain's last trip is deleted, its card offers Move to planned / Move to wishlist / Remove, so a mistaken "Mark as skied" can be undone from the editor. (Not in the spec; found while reverting the Jay Peak test.)
